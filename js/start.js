@@ -20,8 +20,8 @@ export class SingleGround {
         this.y = canvas.height*0.85;
         this.height = canvas.height*0.15;
         this.width = canvas.width*0.1;
-        // 移动一次的步长：必须设置为宽度的因子 否则会有黑边
-        this.step = 2;
+        // 移动一次的步长
+        this.step = 4;
     }
 
     drawToCanvas(image) {
@@ -30,6 +30,7 @@ export class SingleGround {
             var rightX = canvas.width + this.x;
             cxt.drawImage(image, rightX, this.y, this.width, this.height);
         }
+        // if(this.x < 0 && this.x )
         cxt.drawImage(image, this.x, this.y, this.width, this.height);
     }
 }
@@ -81,7 +82,8 @@ export default class StartPage {
             this.grounds[i].x -= this.grounds[i].step;
             if (this.grounds[i].x <= -this.grounds[i].width) {
                 // 超出则放到最右边
-                this.grounds[i].x = canvas.width*0.9;
+                // 此处需注意 不能直接简单的设置为canvas*0.9避免移动步长不算宽度因子的情况
+                this.grounds[i].x = canvas.width + this.grounds[i].x;
             }
         }
     }
