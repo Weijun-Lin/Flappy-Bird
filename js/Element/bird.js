@@ -1,9 +1,9 @@
 // 小鸟类
 
-import { srcPath, canvas, loadImage } from "./global.js"
+import { srcPath, canvas, loadImage } from "../global.js"
 
 console.log(typeof(canvas));
-const cxt = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 
 export default class Bird {
     constructor() {
@@ -21,7 +21,7 @@ export default class Bird {
     // 绘制鸟到画布上 三只鸟在一张精灵图上 所以需指定第几个
     drawToCanvas(image) {
         var sliceX = image.width * this.index / 3;
-        cxt.drawImage(image, sliceX, 0, image.width/3, image.height, 
+        ctx.drawImage(image, sliceX, 0, image.width/3, image.height, 
                         this.x, this.y, this.width, this.height);
     }
 

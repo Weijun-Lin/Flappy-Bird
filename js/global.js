@@ -5,7 +5,7 @@
 */
 
 const canvas = wx.createCanvas();
-const cxt = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 const Height = canvas.height;
 const Width = canvas.width;
 
@@ -18,8 +18,12 @@ var Global = {
         ground: "src/Image/ground.png",
         buttonPlay: "src/Image/button_play.png",
         buttonScore: "src/Image/button_score.png",
+        buttonShare: "src/Image/button_share.png",
         bgDay: "src/Image/bg_day.png",
         bgNight: "src/Image/bg_night.png",
+        tutorial: "src/Image/tutorial.png",
+        pipeUp: "src/Image/pipe_up.png",
+        pipeDown: "src/Image/pipe_down.png",
         bgm: "src/Audio/bgm.mp3",
     },
     layout: {
@@ -44,18 +48,38 @@ var Global = {
             y: Height/8,
         },
         buttonPlay: {
-            x: Width/8,
-            y: Height*0.5,
-            width: Width/4,
-            height: Width/6,
+            x: Width/4,
+            y: Height*0.53,
+            width: Width/2,
+            height: Width*0.16,
         },
         buttonScore: {
-            x: Width*5/8,
-            y: Height*0.5,
-            width: Width/4,
-            height: Width/6,
-        }
+            x: Width/2 - Width/6,
+            y: Height*0.68,
+            width: Width/3,
+            height: Width*0.15,
+        },
+        buttonShare: {
+            x: Width/8,
+            y: Height*0.68,
+            width: Width/3,
+            height: Width*0.13,
+        },
+        tutorial: {
+            x: Width/8,
+            y: Height*0.65,
+            width: Width/3,
+            height: Width/4,
+        },
     },
+    /*
+        游戏当前状态
+        0：开始界面
+        1：游戏运行中
+        2：游戏暂停 
+        3：游戏结束
+    */
+    gameState: 0,
 };
 
 function loadImage(imagePath) {
@@ -73,7 +97,11 @@ var Img = {
     ground: loadImage(Global.srcPath.ground),
     buttonPlay: loadImage(Global.srcPath.buttonPlay),
     buttonScore: loadImage(Global.srcPath.buttonScore),
+    buttonShare: loadImage(Global.srcPath.buttonShare),
     bird: loadImage(Global.srcPath.bird),
+    tutorial: loadImage(Global.srcPath.tutorial),
+    pipeUp: loadImage(Global.srcPath.pipeUp),
+    pipeDown: loadImage(Global.srcPath.pipeDown),
 };
 
 export { canvas, loadImage, Global, Img};

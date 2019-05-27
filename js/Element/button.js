@@ -1,8 +1,8 @@
 // 按钮类
 
-import {canvas} from "./global.js"
+import {canvas} from "../global.js"
 
-const cxt = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 
 export default class Button {
     constructor(x, y, width, height) {
@@ -22,6 +22,6 @@ export default class Button {
     }
 
     drawToCanvas(image) {
-        cxt.drawImage(image, this.x, this.y, this.width, this.height);
+        ctx.drawImage(image, this.x, this.y, this.width, this.height);
     }
 }

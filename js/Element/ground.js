@@ -1,8 +1,8 @@
 // 地面元素类
 
-import { canvas } from "./global.js"
+import { canvas } from "../global.js"
 
-const cxt = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 
 export default class SingleGround {
     constructor(x) {
@@ -18,10 +18,10 @@ export default class SingleGround {
         // 如果处于一半在画布之外的状态 同时在右边绘制一个
         if (this.x < 0 && this.x > -this.width) {
             var rightX = canvas.width + this.x;
-            cxt.drawImage(image, rightX, this.y, this.width, this.height);
+            ctx.drawImage(image, rightX, this.y, this.width, this.height);
         }
         // if(this.x < 0 && this.x )
-        cxt.drawImage(image, this.x, this.y, this.width, this.height);
+        ctx.drawImage(image, this.x, this.y, this.width, this.height);
     }
 
     // 控制地面移动

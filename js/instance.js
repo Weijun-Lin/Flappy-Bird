@@ -1,7 +1,7 @@
-import Background from "./background.js"
-import SingleGround from "./ground.js"
-import Button from "./button.js"
-import Bird from "./bird.js"
+import Background from "./Element/background.js"
+import SingleGround from "./Element/ground.js"
+import Button from "./Element/button.js"
+import Bird from "./Element/bird.js"
 import {Global} from "./global.js"
 
 var layout = Global.layout;
@@ -19,6 +19,10 @@ var Instance = {
     grounds: createGround(),
     bird: new Bird(),
     logo: new Button(layout.logo.x, layout.logo.y,layout.logo.width, layout.logo.height),
+    tutorial: new Button(layout.tutorial.x, layout.tutorial.y, 
+                layout.tutorial.width, layout.tutorial.height),
+    buttonShare: new Button(layout.buttonShare.x, layout.buttonShare.y,
+                layout.buttonShare.width, layout.buttonShare.height),
     buttonPlay: new Button(layout.buttonPlay.x, layout.buttonPlay.y,
                 layout.buttonPlay.width, layout.buttonPlay.height),
     buttonScore: new Button(layout.buttonScore.x, layout.buttonScore.y,
