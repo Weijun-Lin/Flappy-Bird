@@ -1,17 +1,17 @@
 // 地面元素类
 
-import { canvas } from "../global.js"
+import { canvas, Global } from "../global.js"
 
 const ctx = canvas.getContext("2d");
 
 export default class SingleGround {
     constructor(x) {
         this.x = x; // 地面只有x坐标改变
-        this.y = canvas.height * 0.85;
-        this.height = canvas.height * 0.15;
-        this.width = canvas.width * 0.1;
+        this.y = Global.layout.ground.y;
+        this.height = Global.layout.ground.height;
+        this.width = Global.layout.ground.width;
         // 移动一次的步长
-        this.step = 3;
+        this.step = Global.layout.ground.step;
     }
 
     drawToCanvas(image) {
@@ -20,7 +20,6 @@ export default class SingleGround {
             var rightX = canvas.width + this.x;
             ctx.drawImage(image, rightX, this.y, this.width, this.height);
         }
-        // if(this.x < 0 && this.x )
         ctx.drawImage(image, this.x, this.y, this.width, this.height);
     }
 

@@ -24,6 +24,8 @@ var Global = {
         tutorial: "src/Image/tutorial.png",
         pipeUp: "src/Image/pipe_up.png",
         pipeDown: "src/Image/pipe_down.png",
+        textReady: "src/Image/text_ready.png",
+        textGameOver: "src/Image/text_game_over.png",
         bgm: "src/Audio/bgm.mp3",
     },
     layout: {
@@ -31,15 +33,16 @@ var Global = {
             x: 0,
             y: 0,
             width: Width,
-            height: Height*0.85,
+            height: Height*0.8,
         },
         // 地面由SingleGround组成 x坐标不一致
         ground: {
-            y: Height*0.85,
+            y: Height*0.8,
             number: 10,
             width: Width/10,
-            height: Height*0.15,
-            interval: 15,
+            height: Height*0.2,
+            interval: 8,
+            step: 1.2,
         },
         logo: {
             width: Width*2/3,
@@ -66,18 +69,32 @@ var Global = {
             height: Width*0.13,
         },
         tutorial: {
-            x: Width/8,
-            y: Height*0.65,
-            width: Width/3,
-            height: Width/4,
+            width: Width/2,
+            height: Width*0.4,
+            x: Width/2 - Width/5,
+            y: Height/3,
         },
+        textReady: {
+            width: Width*2/3,
+            height: Height/10,
+            x: Width/2 - Width*2/6,
+            y: Height/8,
+        },
+        pipe: {
+            width: Width*0.15,
+            gap: Height*0.18,
+            minHeight: Height*0.1,
+            maxHeight: Height*0.8 - Height*0.18 - Height*0.1, // bg.height - gap - minHeight
+            changeX: Width*0.25,
+        }
     },
     /*
         游戏当前状态
         0：开始界面
-        1：游戏运行中
-        2：游戏暂停 
-        3：游戏结束
+        1：游戏开始运行页面
+        2：游戏运行中
+        3：游戏暂停
+        4：游戏结束
     */
     gameState: 0,
 };
@@ -102,6 +119,7 @@ var Img = {
     tutorial: loadImage(Global.srcPath.tutorial),
     pipeUp: loadImage(Global.srcPath.pipeUp),
     pipeDown: loadImage(Global.srcPath.pipeDown),
+    textReady: loadImage(Global.srcPath.textReady),
 };
 
 export { canvas, loadImage, Global, Img};

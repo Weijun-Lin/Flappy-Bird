@@ -1,34 +1,47 @@
 // 小鸟类
 
-import { srcPath, canvas, loadImage } from "../global.js"
+import { Global, canvas } from "../global.js"
 
 console.log(typeof(canvas));
 const ctx = canvas.getContext("2d");
 
 export default class Bird {
     constructor() {
-        this.height = canvas.height*(1/24);
-        this.width = this.height*1.4;   // 宽高比为1.4
+        this.width = canvas.width*0.08;   // 宽高比为1.4
+        this.height = this.width/1.4;
         // 小鸟始终居中
         this.x = canvas.width/2 - this.width/2;
         this.y = canvas.height/3;
         this.index = 0; // 当前小鸟状态 即是那一张精灵图
-        this.interval = 100;
+        this.angle = 0;
+        this.intervalOfUpDown = 100;
+        this.intervalOfDown = 16;
+        this.gravity = 0.065;
+        this.v = 0;
         this.setAnimation();
         this.setAnimationUpDown();
     }
 
     // 绘制鸟到画布上 三只鸟在一张精灵图上 所以需指定第几个
     drawToCanvas(image) {
+        ctx.save();
+        ctx.translate(this.x + 0.5 * this.width, this.y + 0.5 * this.height);
+        ctx.rotate(this.angle);
         var sliceX = image.width * this.index / 3;
         ctx.drawImage(image, sliceX, 0, image.width/3, image.height, 
-                        this.x, this.y, this.width, this.height);
+                        -0.5*this.width, -0.5*this.height, this.width, this.height);
+        ctx.restore();
     }
 
     // 设置小鸟扇翅膀动画
     setAnimation() {
         this.birdTimer = 
-            setInterval(this.changeStateOfSpirit.bind(this), this.interval);
+            setInterval(this.changeStateOfSpirit.bind(this), this.intervalOfUpDown);
+    }
+
+    // 改变状态 -- 翅膀
+    changeStateOfSpirit() {
+        this.index = (this.index + 1) % 3;
     }
 
     // 设置小鸟在开始界面上下移动动画
@@ -42,9 +55,8 @@ export default class Bird {
             setInterval(this.changeStateOfUpDown.bind(this), this.yInterval);
     }
 
-    // 改变状态 -- 翅膀
-    changeStateOfSpirit() {
-        this.index = (this.index + 1)%3;
+    clearUpDownAnimation() {
+        clearInterval(this.birdTimerOfUpDown);
     }
 
     // 改变上下
@@ -72,5 +84,37 @@ export default class Bird {
         }
         this.vY += this.accel*this.yInterval*this.direction/10;
         this.y += this.vY*this.yInterval*this.direction/10;
+    }
+
+    // 点击后的跳跃
+    jump() {
+        this.v = -3;
+        this.angle = -20*Math.PI/180;
+    }
+
+    // 设置向下移动动画
+    setDownAnimation() {
+        this.downAnimationTimer = setInterval(this.moveDown.bind(this), this.intervalOfDown);
+    }
+
+    clearDownAnimation() {
+        clearInterval(this.downAnimationTimer);
+    }
+
+    // 向下移动
+    moveDown() {
+        if(Global.gameState == 2) {
+            this.y += this.v*this.intervalOfDown/10;
+            if(this.y >= Global.layout.ground.y) {
+                this.y = Global.layout.ground.y;
+            }
+            this.v += this.intervalOfDown*this.gravity/10;
+            // if(this.angle > Math.PI/2) {
+            //     this.angle = Math.PI/2;
+            // }
+            if (this.v >= 0) {
+                this.angle += 10*Math.PI/180;
+            }
+        }
     }
 }
