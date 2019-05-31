@@ -11,6 +11,7 @@ const Width = canvas.width;
 
 // 界面配置 以及 资源路径
 var Global = {
+    score: 0,
     srcPath: {
         bird: "src/Image/bird.png",
         logo: "src/Image/logo.png",
@@ -27,6 +28,9 @@ var Global = {
         textReady: "src/Image/text_ready.png",
         textGameOver: "src/Image/text_game_over.png",
         bgm: "src/Audio/bgm.mp3",
+        font: "src/Image/Font/font_",
+        scoreBoard: "src/Image/scoreboard.png",
+        medal: "src/Image/medal.png",
     },
     layout: {
         bg: {
@@ -60,7 +64,7 @@ var Global = {
             x: Width/2 - Width/6,
             y: Height*0.68,
             width: Width/3,
-            height: Width*0.15,
+            height: Width*0.17,
         },
         buttonShare: {
             x: Width/8,
@@ -86,7 +90,19 @@ var Global = {
             minHeight: Height*0.1,
             maxHeight: Height*0.8 - Height*0.18 - Height*0.1, // bg.height - gap - minHeight
             changeX: Width*0.25,
-        }
+        },
+        scoreInPlay: {
+            x: Width/2 - (18*3/2),
+            y: Height/30,
+            width: 18,
+            height: 40,
+        },
+        scoreBoard: {
+            width: Width*4/5,
+            height: Width*8/15,
+            x: Width/2 - Width*2/5,
+            y: Height*0.4 - Width*4/15,
+        },
     },
     /*
         游戏当前状态
@@ -105,6 +121,14 @@ function loadImage(imagePath) {
     return Image;
 }
 
+// 接受路径前缀返回图片资源集合
+function loadFromPrefix(prefixPath, type) {
+    var fontImages = [];
+    for(var i = 0;i < 10;i++) {
+        fontImages.push(loadImage(prefixPath+String(i)+type));
+    }
+    return fontImages;
+}
 
 // 全局资源
 var Img = {
@@ -120,6 +144,10 @@ var Img = {
     pipeUp: loadImage(Global.srcPath.pipeUp),
     pipeDown: loadImage(Global.srcPath.pipeDown),
     textReady: loadImage(Global.srcPath.textReady),
+    textGameOver: loadImage(Global.srcPath.textGameOver),
+    font: loadFromPrefix(Global.srcPath.font, ".png"),
+    scoreBoard: loadImage(Global.srcPath.scoreBoard),
+    medal: loadImage(Global.srcPath.medal),
 };
 
-export { canvas, loadImage, Global, Img};
+export { canvas, Global, Img };

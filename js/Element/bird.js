@@ -22,6 +22,16 @@ export default class Bird {
         this.setAnimationUpDown();
     }
 
+    // 重新设置
+    reStart() {
+        this.x = canvas.width / 5;
+        this.y = canvas.height / 3;
+        this.index = 0; // 当前小鸟状态 即是那一张精灵图
+        this.angle = 0;
+        this.v = 0;
+        this.setAnimationUpDown();
+    }
+
     // 绘制鸟到画布上 三只鸟在一张精灵图上 所以需指定第几个
     drawToCanvas(image) {
         ctx.save();
@@ -103,17 +113,17 @@ export default class Bird {
 
     // 向下移动
     moveDown() {
-        if(Global.gameState == 2) {
+        if(Global.gameState == 2 || Global.gameState == 4) {
             this.y += this.v*this.intervalOfDown/10;
-            if(this.y >= Global.layout.ground.y) {
-                this.y = Global.layout.ground.y;
+            if(this.y + this.height >= Global.layout.ground.y) {
+                this.y = Global.layout.ground.y - this.height + 2;
             }
             this.v += this.intervalOfDown*this.gravity/10;
-            // if(this.angle > Math.PI/2) {
-            //     this.angle = Math.PI/2;
-            // }
+            if(this.angle > Math.PI/2) {
+                this.angle = Math.PI/2;
+            }
             if (this.v >= 0) {
-                this.angle += 10*Math.PI/180;
+                this.angle += 3*Math.PI/180;
             }
         }
     }

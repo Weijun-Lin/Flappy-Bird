@@ -9,5 +9,5 @@ import GamePlayPage from "./js/Page/gamePlayPage.js"
 // bgm.autoplay = true;
 
 // 开始初始化界面
-// new StartPage()
-new GamePlayPage()
+new StartPage()
+// new GamePlayPage()

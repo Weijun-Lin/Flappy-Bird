@@ -20,7 +20,7 @@ export default class Background {
     }
 
     setAnimation() {
-        this.timer = setInterval(this.changeType.bind(this), 8000);
+        this.timer = setInterval(this.changeType.bind(this), 10000);
     }
 
     changeType() {

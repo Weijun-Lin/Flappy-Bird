@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -16,7 +16,7 @@
 	"libVersion": "2.7.0",
 	"appid": "wxa3401c596a7970b1",
 	"projectname": "Flappy-Bird",
-	"cloudfunctionTemplateRoot": "",
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
