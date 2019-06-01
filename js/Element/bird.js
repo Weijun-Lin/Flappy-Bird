@@ -1,14 +1,14 @@
 // 小鸟类
 
-import { Global, canvas } from "../global.js"
+import { Global, canvas, Img } from "../global.js"
 
 console.log(typeof(canvas));
 const ctx = canvas.getContext("2d");
 
 export default class Bird {
     constructor() {
-        this.width = canvas.width*0.08;   // 宽高比为1.4
-        this.height = this.width/1.4;
+        this.height = canvas.height*0.03;
+        this.width = this.height*1.4;   // 宽高比为1.4
         // 小鸟始终居中
         this.x = canvas.width/2 - this.width/2;
         this.y = canvas.height/3;
@@ -16,7 +16,8 @@ export default class Bird {
         this.angle = 0;
         this.intervalOfUpDown = 100;
         this.intervalOfDown = 16;
-        this.gravity = 0.065;
+        // this.gravity = 0.065;
+        this.gravity = 0.07;
         this.v = 0;
         this.setAnimation();
         this.setAnimationUpDown();
@@ -33,12 +34,12 @@ export default class Bird {
     }
 
     // 绘制鸟到画布上 三只鸟在一张精灵图上 所以需指定第几个
-    drawToCanvas(image) {
+    drawToCanvas() {
         ctx.save();
         ctx.translate(this.x + 0.5 * this.width, this.y + 0.5 * this.height);
         ctx.rotate(this.angle);
-        var sliceX = image.width * this.index / 3;
-        ctx.drawImage(image, sliceX, 0, image.width/3, image.height, 
+        var sliceX = Img.bird.width * this.index / 3;
+        ctx.drawImage(Img.bird, sliceX, 0, Img.bird.width/3, Img.bird.height, 
                         -0.5*this.width, -0.5*this.height, this.width, this.height);
         ctx.restore();
     }

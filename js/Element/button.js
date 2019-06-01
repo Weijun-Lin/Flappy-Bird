@@ -5,11 +5,11 @@ import {canvas} from "../global.js"
 const ctx = canvas.getContext("2d");
 
 export default class Button {
-    constructor(x, y, width, height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height
+    constructor(layout) {
+        this.x = layout.x;
+        this.y = layout.y;
+        this.width = layout.width;
+        this.height = layout.height
     }
 
     // 接受坐标 判断是否点击到

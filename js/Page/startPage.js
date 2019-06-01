@@ -1,9 +1,10 @@
 // 游戏开始界面
 // 点击开始按钮后进入正式游戏界面
 
-import {Global, canvas, Img} from "../global.js"
-import {Instance, groundTimer} from "../instance.js"
+import { Global, canvas, Img, openDataContext, sharedCanvas } from "../global.js"
+import { Instance, groundTimer } from "../instance.js"
 import GamePlayPage from "./gamePlayPage.js"
+import {drawTextToCanvas, drawImage } from "../Tool/tool.js"
 
 // 获取绘图上下文
 const ctx = canvas.getContext("2d");
@@ -31,11 +32,26 @@ export default class StartPage {
     dealTouochEvent(res) {
         var x = res.touches[0].pageX;
         var y = res.touches[0].pageY;
-        if(Instance.buttonPlay.isClicked(x, y)) {
-            console.log("clicked");
-            // 加载退场动画 结束后退出
-            this.removeTouchMonitor();
-            this.setQuitAnimation();
+        if(Global.scoreBoardState == 0) {
+            if(Instance.buttonPlay.isClicked(x, y) && Global.scoreBoardState == 0) {
+                console.log("click start button");
+                // 加载退场动画 结束后退出
+                this.removeTouchMonitor();
+                this.setQuitAnimation();
+            }
+            if(Instance.buttonScore.isClicked(x, y)) {
+                console.log("click score button");
+                Global.scoreBoardState = 1;
+                openDataContext.postMessage({
+                    type: "getFriendInfo"
+                });
+            }
+        }
+        if(Global.scoreBoardState == 1) {
+            if(Instance.buttonRankBoardClose.isClicked(x, y)) {
+                console.log("close rank");
+                Global.scoreBoardState = 0;
+            }
         }
     }
 
@@ -63,14 +79,26 @@ export default class StartPage {
     // 开始界面主循环
     loop() {  
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        Instance.background.drawToCanvas(Img.bgDay, Img.bgNight);
+        // 如果处于排行榜显示状态 则背景半透明
+        if (Global.scoreBoardState == 1) {
+            ctx.globalAlpha = 0.5;
+        }
+        Instance.background.drawToCanvas();
         Instance.grounds.forEach(function(item){
-            item.drawToCanvas(Img.ground);
+            item.drawToCanvas();
         })
         Instance.buttonPlay.drawToCanvas(Img.buttonPlay);
         Instance.buttonScore.drawToCanvas(Img.buttonScore);
-        Instance.bird.drawToCanvas(Img.bird);
+        Instance.bird.drawToCanvas();
         Instance.logo.drawToCanvas(Img.logo);
+        // 绘制排行榜时透明度为1
+        if(Global.scoreBoardState == 1) {
+            ctx.globalAlpha = 1;
+            openDataContext.postMessage({
+                type: "draw"
+            });
+            drawImage(sharedCanvas, Global.layout.scoreRankBoard);
+        }
         if(Global.gameState == 0) {
             this.frameCallBackId = requestAnimationFrame(this.loopBind);
         }

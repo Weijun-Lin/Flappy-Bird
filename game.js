@@ -3,10 +3,14 @@ import StartPage from "./js/Page/startPage.js"
 import GamePlayPage from "./js/Page/gamePlayPage.js"
 
 // 设置游戏BGM
-// var bgm = wx.createInnerAudioContext();
-// bgm.src = Global.srcPath.bgm;
-// bgm.loop = true;
-// bgm.autoplay = true;
+function BGM() {
+    var bgm = wx.createInnerAudioContext();
+    bgm.src = Global.srcPath.bgm;
+    bgm.loop = true;
+    bgm.autoplay = true;
+}
+BGM();
+wx.onShow(BGM);
 
 // 开始初始化界面
 new StartPage()

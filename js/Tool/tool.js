@@ -13,8 +13,16 @@ const ctx = canvas.getContext("2d");
         height: the one char's height
         type: whcih style to choose
 */
-function drawTextToCanvas(text, x, y, width, height) {
+function drawTextToCanvas(text, layout) {
+    var x = layout.x;
+    var width = layout.width;
+    var y = layout.y;
+    var height = layout.height;
     for(var i = 0;i < text.length;i++) {
+        // 防止太长
+        if(i >= 5) {
+            break;
+        }
         var number = Number(text[i]);
         // 设置当前子图
         var subImage = Img.font[number];
@@ -23,4 +31,9 @@ function drawTextToCanvas(text, x, y, width, height) {
     }
 }
 
-export {drawTextToCanvas}
+// 通过Global的布局对象绘制
+function drawImage(img, lay) {
+    ctx.drawImage(img, lay.x, lay.y, lay.width, lay.height);
+}
+
+export { drawTextToCanvas, drawImage }

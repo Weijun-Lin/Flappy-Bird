@@ -1,6 +1,6 @@
 // 背景类 昼夜交替
 
-import { canvas, Global } from "../global.js"
+import { canvas, Global, Img } from "../global.js"
 
 const ctx = canvas.getContext("2d");
 
@@ -14,8 +14,8 @@ export default class Background {
         this.setAnimation();
     }
 
-    drawToCanvas(imageDay, imageNight) {
-        var image = this.type == 1 ? imageDay : imageNight;
+    drawToCanvas() {
+        var image = this.type == 1 ? Img.bgDay : Img.bgNight;
         ctx.drawImage(image, this.x, this.y, this.width, this.height);
     }
 

@@ -1,8 +1,8 @@
 // 游戏正式开始
 
-import { Global, canvas, Img } from "../global.js"
+import { Global, canvas, Img, openDataContext, sharedCanvas } from "../global.js"
 import { Instance } from "../instance.js"
-import {drawTextToCanvas} from "../Tool/tool.js"
+import {drawTextToCanvas, drawImage } from "../Tool/tool.js"
 
 // 获取绘图上下文
 const ctx = canvas.getContext("2d");
@@ -33,6 +33,7 @@ export default class GamePlayPage {
         Instance.pipes[0].x = 2 * canvas.width;
         Instance.pipes[1].x = 3 * canvas.width;
         Global.score = 0;
+        Global.scoreFlag = 0;
     }
 
     // 触摸事件
@@ -42,23 +43,34 @@ export default class GamePlayPage {
 
     // 处理触摸事件
     dealTouochEvent(res) {
-        // 第一次点将Tap和Ready淡出
-        if(Global.gameState == 1) {
-            Global.gameState = 2;
-            this.tutorialTimer = setInterval(this.quitTutorial.bind(this), 20);
-            Instance.bird.clearUpDownAnimation();
-            Instance.bird.setDownAnimation();
-            Instance.bird.jump();
-        } 
-        else if(Global.gameState == 2) {
-            Instance.bird.jump();
+        var x = res.touches[0].pageX;
+        var y = res.touches[0].pageY;
+        if(Global.scoreBoardState == 0) {
+            // 第一次点将Tap和Ready淡出
+            if(Global.gameState == 1) {
+                Global.gameState = 2;
+                this.tutorialTimer = setInterval(this.quitTutorial.bind(this), 20);
+                Instance.bird.clearUpDownAnimation();
+                Instance.bird.setDownAnimation();
+                Instance.bird.jump();
+            } 
+            else if(Global.gameState == 2) {
+                Instance.bird.jump();
+            }
+            else if(Global.gameState == 4) {
+                if(Instance.scoreBoard.buttonPlay.isClicked(x, y)) {
+                    Instance.bird.clearDownAnimation();
+                    this.reStart();
+                    console.log("restart");
+                }
+                if(Instance.scoreBoard.buttonScore.isClicked(x, y)) {
+                    Global.scoreBoardState = 1;
+                }
+            }
         }
-        else if(Global.gameState == 4) {
-            var x = res.touches[0].pageX;
-            var y = res.touches[0].pageY;
-            if(Instance.scoreBoard.buttonPlay.isClicked(x, y)) {
-                Instance.bird.clearDownAnimation();
-                this.reStart();
+        else {
+            if(Instance.buttonRankBoardClose.isClicked(x, y)) {
+                Global.scoreBoardState = 0;
             }
         }
     }
@@ -101,13 +113,16 @@ export default class GamePlayPage {
     loop() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = this.alpha;
-        Instance.background.drawToCanvas(Img.bgDay, Img.bgNight);
+        if (Global.scoreBoardState == 1) {
+            ctx.globalAlpha = 0.5;
+        }
+        Instance.background.drawToCanvas();
         Instance.pipes.forEach(function (item) {
-            item.drawToCanvas(Img.pipeUp, Img.pipeDown);
+            item.drawToCanvas();
         })
-        Instance.bird.drawToCanvas(Img.bird);
+        Instance.bird.drawToCanvas();
         Instance.grounds.forEach(function (item) {
-            item.drawToCanvas(Img.ground);
+            item.drawToCanvas();
         });
         if(Global.gameState == 1) {
             this.drawGameReady();
@@ -117,10 +132,15 @@ export default class GamePlayPage {
             Instance.scoreBoard.drawToCanvas(Global.score, 100);
             Instance.textGameOver.drawToCanvas(Img.textGameOver);
         }
-        var tempScoreLayout = Global.layout.scoreInPlay;
         if(Global.gameState != 4 && Global.gameState != 1) {
-            drawTextToCanvas(String(Global.score), tempScoreLayout.x, tempScoreLayout.y, 
-                        tempScoreLayout.width, tempScoreLayout.height);
+            drawTextToCanvas(String(Global.score), Global.layout.scoreInPlay);
+        }
+        if(Global.scoreBoardState == 1) {
+            ctx.globalAlpha = 1;
+            openDataContext.postMessage({
+                type: "draw"
+            });
+            drawImage(sharedCanvas, Global.layout.scoreRankBoard);
         }
         this.frameCallBackId = requestAnimationFrame(this.loopBind);
     }

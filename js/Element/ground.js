@@ -1,6 +1,6 @@
 // 地面元素类
 
-import { canvas, Global } from "../global.js"
+import { canvas, Global, Img } from "../global.js"
 
 const ctx = canvas.getContext("2d");
 
@@ -14,13 +14,13 @@ export default class SingleGround {
         this.step = Global.layout.ground.step;
     }
 
-    drawToCanvas(image) {
+    drawToCanvas() {
         // 如果处于一半在画布之外的状态 同时在右边绘制一个
         if (this.x < 0 && this.x > -this.width) {
             var rightX = canvas.width + this.x;
-            ctx.drawImage(image, rightX, this.y, this.width, this.height);
+            ctx.drawImage(Img.ground, rightX, this.y, this.width, this.height);
         }
-        ctx.drawImage(image, this.x, this.y, this.width, this.height);
+        ctx.drawImage(Img.ground, this.x, this.y, this.width, this.height);
     }
 
     // 控制地面移动

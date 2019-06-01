@@ -1,4 +1,4 @@
-import { canvas, Global } from "../global.js"
+import { canvas, Global, Img } from "../global.js"
 
 const ctx = canvas.getContext("2d");
 
@@ -24,11 +24,11 @@ export default class Pipe {
         this.x -= Global.layout.ground.step;
     }
 
-    drawToCanvas(imageUp, imageDown) {
+    drawToCanvas() {
         // 绘制上半部分
-        ctx.drawImage(imageUp, this.x, this.upY, this.width, this.maxHeight);
+        ctx.drawImage(Img.pipeUp, this.x, this.upY, this.width, this.maxHeight);
         // 绘制上半部分
-        ctx.drawImage(imageDown, this.x, this.downY, this.width, this.maxHeight);
+        ctx.drawImage(Img.pipeDown, this.x, this.downY, this.width, this.maxHeight);
         // console.log(this.downY, this.downHeight);
     }
 }

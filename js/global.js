@@ -8,10 +8,16 @@ const canvas = wx.createCanvas();
 const ctx = canvas.getContext("2d");
 const Height = canvas.height;
 const Width = canvas.width;
+let openDataContext = wx.getOpenDataContext();
+let sharedCanvas = openDataContext.canvas;
+// 设置子域画布大小
+sharedCanvas.width = canvas.width * 0.8;
+sharedCanvas.height = canvas.height * 0.7;
 
 // 界面配置 以及 资源路径
 var Global = {
     score: 0,
+    scoreFlag: 0,
     srcPath: {
         bird: "src/Image/bird.png",
         logo: "src/Image/logo.png",
@@ -30,7 +36,9 @@ var Global = {
         bgm: "src/Audio/bgm.mp3",
         font: "src/Image/Font/font_",
         scoreBoard: "src/Image/scoreboard.png",
-        medal: "src/Image/medal.png",
+        medal1: "src/Image/medals_1.png",
+        medal2: "src/Image/medals_2.png",
+        medal3: "src/Image/medals_3.png",
     },
     layout: {
         bg: {
@@ -46,7 +54,7 @@ var Global = {
             width: Width/10,
             height: Height*0.2,
             interval: 8,
-            step: 1.2,
+            step: 3,
         },
         logo: {
             width: Width*2/3,
@@ -85,10 +93,10 @@ var Global = {
             y: Height/8,
         },
         pipe: {
-            width: Width*0.15,
+            width: Width*0.18,
             gap: Height*0.18,
-            minHeight: Height*0.1,
-            maxHeight: Height*0.8 - Height*0.18 - Height*0.1, // bg.height - gap - minHeight
+            minHeight: Height*0.15,
+            maxHeight: Height*0.8 - Height*0.18 - Height*0.15, // bg.height - gap - minHeight
             changeX: Width*0.25,
         },
         scoreInPlay: {
@@ -103,6 +111,25 @@ var Global = {
             x: Width/2 - Width*2/5,
             y: Height*0.4 - Width*4/15,
         },
+        scoreRankBoard: {
+            x: canvas.width / 2 - sharedCanvas.width / 2,
+            y: canvas.height / 2 - sharedCanvas.height / 2,
+            width: sharedCanvas.width, 
+            height: sharedCanvas.height,
+        },
+        rankBoardClose: {
+            x: canvas.width/2-sharedCanvas.width/2+sharedCanvas.width-sharedCanvas.height/12- 
+            (sharedCanvas.height/7-sharedCanvas.height/12)/2,
+            y: canvas.height/2-sharedCanvas.height/2+(sharedCanvas.height/7-sharedCanvas.height/12)/2,
+            width: sharedCanvas.height/12,
+            height: sharedCanvas.height/12,
+        },
+        medal: {
+            x: 0,
+            y: 0,
+            height: Width*0.1,
+            width: Width*0.1,
+        },
     },
     /*
         游戏当前状态
@@ -113,6 +140,8 @@ var Global = {
         4：游戏结束
     */
     gameState: 0,
+    // 排行榜显示 0：不显示 1:显示
+    scoreBoardState: 0,
 };
 
 function loadImage(imagePath) {
@@ -147,7 +176,17 @@ var Img = {
     textGameOver: loadImage(Global.srcPath.textGameOver),
     font: loadFromPrefix(Global.srcPath.font, ".png"),
     scoreBoard: loadImage(Global.srcPath.scoreBoard),
-    medal: loadImage(Global.srcPath.medal),
+    medal1: loadImage(Global.srcPath.medal1),
 };
 
-export { canvas, Global, Img };
+// wx.setUserCloudStorage({
+//     KVDataList: [{ key: 'score', value: String(21) }],
+//     success: res => {
+//         console.log("setBest", res);
+//     },
+//     fail: res => {
+//         console.log(res);
+//     }
+// });
+
+export { canvas, openDataContext, Global, Img, sharedCanvas };
