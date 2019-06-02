@@ -1,6 +1,15 @@
-// 按钮类
+/*
+按钮类：
+    @Name: Button
+    @Attributes:
+        constructor：构造函数
+        isClicked: 判断是否点击到
+        drawToCanvas：绘图
+    @Decription:
+        按钮的基础操作 许多图片展示也可以使用按钮类
+*/
 
-import {canvas} from "../global.js"
+import {canvas} from "../global"
 
 const ctx = canvas.getContext("2d");
 

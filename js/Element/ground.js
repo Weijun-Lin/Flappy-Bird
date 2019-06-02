@@ -1,6 +1,14 @@
-// 地面元素类
+/*地面元素类
+    @Name: SingleGround
+    @Attributes:
+        constructor：构造函数
+        drawToCanvas：绘图
+        move: 地面移动
+    @Decription:
+        地面单片移动 地面由许多的单片地面组成
+*/
 
-import { canvas, Global, Img } from "../global.js"
+import { canvas, Global, Img } from "../global"
 
 const ctx = canvas.getContext("2d");
 
@@ -10,8 +18,6 @@ export default class SingleGround {
         this.y = Global.layout.ground.y;
         this.height = Global.layout.ground.height;
         this.width = Global.layout.ground.width;
-        // 移动一次的步长
-        this.step = Global.layout.ground.step;
     }
 
     drawToCanvas() {
@@ -25,8 +31,8 @@ export default class SingleGround {
 
     // 控制地面移动
     move() {
-        this.x -= this.step;
-        if(this.x <= -this.width) {
+        this.x -= Global.layout.ground.step;
+        if (this.x <= -this.width) {
             // 超出则放到最右边
             // 此处需注意 不能直接简单的设置为canvas*0.9避免移动步长不算宽度因子的情况
             this.x = canvas.width + this.x;
