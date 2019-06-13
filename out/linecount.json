@@ -1522,6 +1522,405 @@
                     "comment": 0
                 }
             ]
+        },
+        {
+            "version": "0.1.7",
+            "counttime": "2019-06-13 15:27:34",
+            "filesum": 58,
+            "codesum": 1481,
+            "commentsum": 373,
+            "blanksum": 198,
+            "filelist": [
+                {
+                    "filename": "content.txt",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 3,
+                    "code": 9,
+                    "comment": 3,
+                    "filename": "game.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "game.json"
+                },
+                {
+                    "blank": 6,
+                    "code": 22,
+                    "comment": 15,
+                    "filename": "js\\Element\\background.js"
+                },
+                {
+                    "blank": 14,
+                    "code": 108,
+                    "comment": 53,
+                    "filename": "js\\Element\\bird.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 11,
+                    "filename": "js\\Element\\button.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 23,
+                    "comment": 14,
+                    "filename": "js\\Element\\ground.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 25,
+                    "comment": 14,
+                    "filename": "js\\Element\\pipe.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 49,
+                    "comment": 15,
+                    "filename": "js\\Element\\scoreboard.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 186,
+                    "comment": 50,
+                    "filename": "js\\global.js"
+                },
+                {
+                    "blank": 25,
+                    "code": 201,
+                    "comment": 52,
+                    "filename": "js\\instance.js"
+                },
+                {
+                    "blank": 13,
+                    "code": 142,
+                    "comment": 29,
+                    "filename": "js\\Page\\gamePlayPage.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 96,
+                    "comment": 34,
+                    "filename": "js\\Page\\startPage.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 21,
+                    "comment": 13,
+                    "filename": "js\\Tool\\tool.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "LICENSE"
+                },
+                {
+                    "blank": 22,
+                    "code": 234,
+                    "comment": 66,
+                    "filename": "myOpenDataContext\\index.js"
+                },
+                {
+                    "filename": "myOpenDataContext\\src\\close.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "myOpenDataContext\\src\\lastPage.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "myOpenDataContext\\src\\nextPage.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "myOpenDataContext\\src\\title.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 47,
+                    "comment": 0,
+                    "filename": "project.config.json"
+                },
+                {
+                    "blank": 68,
+                    "code": 271,
+                    "comment": 4,
+                    "filename": "README.md"
+                },
+                {
+                    "filename": "src\\Audio\\bgm.mp3",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Audio\\hit.mp3",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Audio\\point.mp3",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Audio\\wing.mp3",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\bg_day.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\bg_night.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\bird.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\button_menu.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\button_ok.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\button_pause.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\button_play.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\button_restart.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\button_resume.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\button_score.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_0.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_1.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_2.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_3.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_4.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_5.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_6.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_7.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_8.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\Font\\font_9.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\ground.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\logo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\medals_1.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\medals_2.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\medals_3.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\pipe_down.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\pipe_up.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\score.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\scoreboard.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\text_game_over.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\text_ready.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\Image\\tutorial.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                }
+            ]
         }
     ]
 }
