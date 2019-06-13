@@ -110,11 +110,11 @@ SOFTWARE.
 EXTENSION NAME : linecount
 EXTENSION VERSION : 0.1.7
 -------------------------------------------------------------------------------
-count time : 2019-06-02 16:05:34
-total files : 54
-total code lines : 1111
-total comment lines : 187
-total blank lines : 116
+count time : 2019-06-13 15:27:34
+total files : 58
+total code lines : 1481
+total comment lines : 373
+total blank lines : 198
 ```
 
 ## 类概述
